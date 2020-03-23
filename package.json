@@ -1,0 +1,33 @@
+{
+  "name": "software-citation",
+  "version": "1.0.0",
+  "description": "Enabling research software engineers to add citability in open source software without hassle.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start:dev": "webpack-dev-server --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarthak-sehgal/software-citation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarthak-sehgal/software-citation/issues"
+  },
+  "homepage": "https://github.com/sarthak-sehgal/software-citation#readme",
+  "devDependencies": {
+    "html-webpack-injector": "^1.1.2",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^3.2.0"
+  }
+}
