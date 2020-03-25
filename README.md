@@ -17,7 +17,7 @@ This project is a part of [eLife Innovation Leaders 2020](https://elifesciences.
 - [x] User journey
 - [x] Wireframes
 - [x] Project Setup
-- [ ] Landing page
+- [x] Landing page
 - [ ] Step 1 UI
 - [ ] Zenodo API server integration
 - [ ] Step 2 UI (Display sample metadata form with placeholders)
