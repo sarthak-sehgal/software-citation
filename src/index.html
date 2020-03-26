@@ -14,10 +14,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link" href="#">About</a>
-					<a class="nav-item nav-link" href="#">FAQ</a>
-					<a class="nav-item nav-link" href="#">Request Feature</a>
+					<a class="nav-item nav-link active" href="#" data-url='./'>Home <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link" href="#" data-url='./about'>About</a>
+					<a class="nav-item nav-link" href="#" data-url='./faq'>FAQ</a>
+					<a class="nav-item nav-link" href="#" data-url='./request'>Request Feature</a>
 				</div>
 			</div>
 		</nav>
@@ -29,8 +29,33 @@
 				<p>Generate a CFF file for your open source software and upload it on your repository before creating a release. <a href="http://citation-file-format.github.io/" target="_blank" rel="noopener">CITATION.cff</a> files are plain text files with human- and machine-readable citation information for software. Code developers can include them in their repositories to let others know how to correctly cite their software.</p>
 				<div class="">
 					<button type="button" class="btn btn-secondary">Learn More</button>
-					<button type="button" class="btn btn-primary">Get Started</button>
+					<button id="get-started-btn" type="button" class="btn btn-primary">Get Started</button>
 				</div>
+		</div>
+		<div id="steps">
+			<div id="progressBar" class="progress">
+				<div class="progress-bar w-25" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+			<div id="content">
+				<div id="step1">
+					<form>
+						<div class="form-group">
+							<label for="githubURL">GitHub Repository URL</label>
+							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL">
+						</div>
+						<div class="form-group">
+							<label for="version">Version</label>
+							<input type="text" class="form-control" id="version" placeholder="Enter version number to be released">
+						</div>
+						<div class="form-group">
+							<label for="zenodoToken">Zenodo Access Token</label>
+							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token">
+							<small id="zenodoHelp" class="form-text text-muted">Please login to Zenodo and <a href="https://zenodo.org/account/settings/applications/tokens/new/" target="_blank" rel="noopener">generate an access token</a> with write permissions. We do not store your token. Do not want to share your token? <a href="#">Follow these steps.</a></small>
+						</div>
+						<button type="submit" class="btn btn-primary">Next</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</main>
 
@@ -41,6 +66,26 @@
 			</span>
 		</div>
 	</footer>
+
+	<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Do you want to continue?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Your progress will be lost. Do you still want to continue?
+				</div>
+				<div class="modal-footer">
+					<button id="warningModalContinueBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Continue</button>
+					<button id="warningModalStayBtn" type="button" class="btn btn-primary">Stay on same page</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

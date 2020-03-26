@@ -4,7 +4,8 @@ const HtmlWebpackInjector = require('html-webpack-injector');
 
 module.exports = {
   entry: {
-      index_head: './src/index.ts'
+      index_head: './src/index.ts',
+      dom: './src/dom.ts'
   },
   // delevelopment config
   devtool: 'inline-source-map',
@@ -59,7 +60,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
       inject: true,
       filename: 'index.html',
-      chunks: ['index_head']
+      chunks: ['index_head', 'dom']
     }),
     new HtmlWebpackInjector()
   ],
