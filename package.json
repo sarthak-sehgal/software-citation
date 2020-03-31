@@ -12,9 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/sarthak-sehgal/software-citation.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["software", "citation", "doi", "open science", "open source"],
+  "author": "Sarthak Sehgal",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sarthak-sehgal/software-citation/issues"
   },
