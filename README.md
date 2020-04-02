@@ -18,7 +18,7 @@ This project is a part of [eLife Innovation Leaders 2020](https://elifesciences.
 - [x] Wireframes
 - [x] Project Setup
 - [x] Landing page
-- [ ] Step 1 UI
-- [ ] Zenodo API server integration
+- [x] Step 1 UI
+- [x] Zenodo API server integration
 - [ ] Step 2 UI (Display sample metadata form with placeholders)
 - [ ] Generate .cff and .json and store on server temporarily
