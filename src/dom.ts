@@ -66,6 +66,8 @@ function crossFadeDivs (idOut: string, idIn: string, dur: number, cb?: () => voi
 }
 
 /** DOM changes */
+// startup changes
+fadeOutDiv('spinnerDiv', 0);
 
 // cross fade on get started button click
 getStartedBtnDiv.addEventListener('click', () => {
@@ -106,7 +108,7 @@ step1Form.addEventListener('submit', (e) => {
 	// crossFadeDivs('step1', 'step2', 300);
 	// progressBar.style.width = "66%";
 
-	crossFadeDivs('step1', 'spinnerDiv', 300, () => spinnerDiv.style.display="flex");
+	crossFadeDivs('step1', 'spinnerDiv', 300);
 	(async () => {
 			await delay(300);
 			getDoi(zenodoToken.value, (res: resObjType) => {
