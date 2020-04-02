@@ -14,6 +14,15 @@ body {
 	min-height: calc(100vh - 60px);
 }
 
+.form-group {
+	&.required {
+		label:after {
+			content: '*';
+			color: #dc3545;
+		}
+	}
+}
+
 .container-fluid {
   padding-left: 0;
   padding-right: 0;

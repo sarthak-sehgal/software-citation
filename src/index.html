@@ -48,11 +48,11 @@
 							<label for="githubURL">GitHub Repository URL</label>
 							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL">
 						</div>
-						<div class="form-group">
+						<div class="form-group required">
 							<label for="version">Version</label>
 							<input type="text" class="form-control" id="version" placeholder="Enter version number to be released" required>
 						</div>
-						<div class="form-group">
+						<div class="form-group required">
 							<label for="zenodoToken">Zenodo Access Token</label>
 							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token" required>
 							<small id="zenodoHelp" class="form-text text-muted">Please login to Zenodo and <a href="https://zenodo.org/account/settings/applications/tokens/new/" target="_blank" rel="noopener">generate an access token</a> with write permissions. We do not store your token. Do not want to share your token? <a href="#">Follow these steps.</a></small>
@@ -69,26 +69,26 @@
 						</button>
 					</div>
 					<form id="step2-form" class="needs-validation" novalidate>
-						<div class="form-group">
+						<div class="form-group required">
 							<label for="form-doi">DOI</label>
 							<input type="text" class="form-control" id="form-doi" placeholder="Enter DOI for your software" disabled required>
 						</div>
-						<div class="form-group">
+						<div class="form-group required">
 							<label for="form-title">Title</label>
 							<input type="text" class="form-control" id="form-title" aria-describedby="title-help" placeholder="My Open Software" required>
 							<small id="title-help" class="form-text text-muted">The name of the software</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group required">
 							<label for="form-release-date">Release date</label>
 							<input type="text" class="form-control" id="form-release-date" aria-describedby="release-date-help" placeholder="YYYY-MM-DD" required>
 							<small id="release-date-help" class="form-text text-muted">The release date of the software version</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group required">
 							<label for="form-release-version">Release Version</label>
 							<input type="text" class="form-control" id="form-release-version" aria-describedby="release-version-help" placeholder="GitHub Release Version" required>
 							<small id="release-version-help" class="form-text text-muted">The version of the software</small>
 						</div>
-						<div class="form-group">
+						<div class="form-group required">
 							<label>Author(s)</label>
 							<!-- TO DO -->
 							<small class="form-text text-muted">The author(s) of the software</small>
