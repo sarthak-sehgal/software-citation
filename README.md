@@ -8,6 +8,7 @@ The chicken and egg problem: Zenodo requires you to upload a GitHub release file
 This project is a part of [eLife Innovation Leaders 2020](https://elifesciences.org/labs/fdcb6588/innovation-leaders-2020-introducing-the-cohort).
 
 # Relevant information
+- [Software Citation Backend](https://github.com/sarthak-sehgal/software-citation-backend)
 - [Mock designs](http://xd.adobe.com/view/cf2fd7e9-31c0-4c0f-5da3-265b996438cf-b91e/)
 - [Problem definition](https://docs.google.com/presentation/d/1tngkEpRfdqv-j2kqkSWrimHTJvMt-n-QgNMuO4_8sBg/edit#slide=id.g7e006c827b_0_0)
 - [Target user personas](https://docs.google.com/presentation/d/1qizTCN-nUCDpasogboV1ddeT-yEQNseIm253ZOrPH5Q/edit?usp=sharing)
@@ -22,3 +23,4 @@ This project is a part of [eLife Innovation Leaders 2020](https://elifesciences.
 - [x] Zenodo API server integration
 - [ ] Step 2 UI (Display sample metadata form with placeholders)
 - [ ] Generate .cff and .json and store on server temporarily
+- [ ] Code of conduct, Contributing Guidelines
