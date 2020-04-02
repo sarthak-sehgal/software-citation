@@ -10,7 +10,7 @@ const getStartedBtnDiv = <HTMLButtonElement>document.getElementById('get-started
 const navItems = document.getElementsByClassName('nav-link')!;
 const warningModalContinueBtn = <HTMLButtonElement>document.getElementById('warningModalContinueBtn')!;
 const warningModalStayBtn = <HTMLButtonElement>document.getElementById('warningModalStayBtn')!;
-const stepOneSubmitBtn = <HTMLButtonElement>document.getElementById('stepOneSubmitBtn')!;
+const step1Form = <HTMLFormElement>document.getElementById('step1-form')!;
 const zenodoToken = <HTMLInputElement>document.getElementById('zenodoToken')!;
 const githubURL = <HTMLInputElement>document.getElementById('githubURL')!;
 const stepOneError = document.getElementById('stepOneError')!;
@@ -78,49 +78,61 @@ warningModalStayBtn.addEventListener('click', () => {
 });
 
 // on going from step1->step2
-stepOneSubmitBtn.addEventListener('click', () => {
-    crossFadeDivs('step1', 'spinnerDiv', 300, () => spinnerDiv.style.display="flex");
-    (async () => {
-        await delay(300);
-        getDoi(zenodoToken.value, (res: resObjType) => {
-            if (res.status == 0) {
-                crossFadeDivs('spinnerDiv', 'step1', 100);
-                fadeInDiv('stepOneError', 150);
-                stepOneError.innerHTML = "";
-                stepOneError.innerHTML = res.message;
-            } else {
-                data.doi = res.message;
-                console.log("Getting data from GitHub");
-                getGHData(githubURL.value, (res: resObjType) => {
-                    console.log(res);
-                    if (res.status == 0) {
-                        crossFadeDivs('spinnerDiv', 'step1', 100);
-                        fadeInDiv('stepOneError', 150);
-                        stepOneError.innerHTML = "";
-                        stepOneError.innerHTML = res.message;
-                    } else {
-                        if (res.status == 2) {
-                            ghUrlWarning.style.display = "block";
-                        } else {
-                            data.title = res.data?.title;
-                            data.description = res.data?.description;
-                        }
+step1Form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	e.stopPropagation();
+	if (step1Form.checkValidity() === false) {
+		step1Form.classList.add('was-validated');
+		return;
+	}
 
-                        crossFadeDivs('spinnerDiv', 'step2', 100);
-                    }
-                })
-            }
-        });
-		})();
-});
+	// simply cross fade without server request for now
+	crossFadeDivs('step1', 'step2', 500);
+	/**
+	crossFadeDivs('step1', 'spinnerDiv', 300, () => spinnerDiv.style.display="flex");
+	(async () => {
+			await delay(300);
+			getDoi(zenodoToken.value, (res: resObjType) => {
+					if (res.status == 0) {
+							crossFadeDivs('spinnerDiv', 'step1', 100);
+							fadeInDiv('stepOneError', 150);
+							stepOneError.innerHTML = "";
+							stepOneError.innerHTML = res.message;
+					} else {
+							data.doi = res.message;
+							console.log("Getting data from GitHub");
+							getGHData(githubURL.value, (res: resObjType) => {
+									console.log(res);
+									if (res.status == 0) {
+											crossFadeDivs('spinnerDiv', 'step1', 100);
+											fadeInDiv('stepOneError', 150);
+											stepOneError.innerHTML = "";
+											stepOneError.innerHTML = res.message;
+									} else {
+											if (res.status == 2) {
+													ghUrlWarning.style.display = "block";
+											} else {
+													data.title = res.data?.title;
+													data.description = res.data?.description;
+											}
+
+											crossFadeDivs('spinnerDiv', 'step2', 100);
+									}
+							})
+					}
+			});
+	})();
+	*/
+}, false);
 
 // on going from step2->step3
-step2Form.addEventListener('submit', function(event: any) { // TO DO: type for "event"
+step2Form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	e.stopPropagation();
 	if (step2Form.checkValidity() === false) {
-		event.preventDefault();
-		event.stopPropagation();
+		step2Form.classList.add('was-validated');
+		return;
 	}
-	step2Form.classList.add('was-validated');
 }, false);
 
 // on going back from step2 (step2->step1)

@@ -43,25 +43,22 @@
 					</div>
 				</div>
 				<div id="step1">
-					<form id="step1-form">
+					<form id="step1-form" class="needs-validation" novalidate>
 						<div class="form-group">
 							<label for="githubURL">GitHub Repository URL</label>
 							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL">
 						</div>
 						<div class="form-group">
 							<label for="version">Version</label>
-							<input type="text" class="form-control" id="version" placeholder="Enter version number to be released">
+							<input type="text" class="form-control" id="version" placeholder="Enter version number to be released" required>
 						</div>
 						<div class="form-group">
 							<label for="zenodoToken">Zenodo Access Token</label>
-							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token">
+							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token" required>
 							<small id="zenodoHelp" class="form-text text-muted">Please login to Zenodo and <a href="https://zenodo.org/account/settings/applications/tokens/new/" target="_blank" rel="noopener">generate an access token</a> with write permissions. We do not store your token. Do not want to share your token? <a href="#">Follow these steps.</a></small>
 						</div>
-						<button type="button" id="stepOneSubmitBtn" class="btn btn-primary">Next</button>
+						<button type="submit" class="btn btn-primary">Next</button>
 						<p id="stepOneError" class="error-msg"></p>
-						<!-- <div class="spinner-border text-primary" role="status">
-							<span class="sr-only">Loading...</span>
-						</div> -->
 					</form>
 				</div>
 				<div id="step2">
@@ -75,7 +72,6 @@
 						<div class="form-group">
 							<label for="form-doi">DOI</label>
 							<input type="text" class="form-control" id="form-doi" placeholder="Enter DOI for your software" disabled required>
-							<!-- <small id="cffVersionHelp" class="form-text text-muted">Version </small> -->
 						</div>
 						<div class="form-group">
 							<label for="form-title">Title</label>
