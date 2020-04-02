@@ -1,5 +1,6 @@
 # [WIP] Software Citation Project
 _"Enabling research software engineers to add citability in open source software without hassle."_
+![Website Preview](./preview.gif)
 
 Software Citation Project is a project aimed at open source software developers who want to enable citability in their software. Open source softwares and packages are widely used and a common problem the developers face is establishing citability to their softwares. Citability is important for researchers for professional as well as personal reasons. It gives them the due credit and recognition. The most common way to enable citation is attaching a DOI through services like [Zenodo](https://zenodo.org) but you would ideally want to attach a [CFF file](https://citation-file-format.github.io) to your software as well. `CITATION.cff` files are plain text files with human- and machine-readable citation information for software. Code developers can include them in their repositories to let others know how to correctly cite their software.
 
