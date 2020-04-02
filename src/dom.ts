@@ -18,6 +18,7 @@ const spinnerDiv = document.getElementById('spinnerDiv')!;
 const ghUrlWarning = document.getElementById('ghUrlWarning')!;
 const step2Form = <HTMLFormElement>document.getElementById('step2-form')!;
 const step2BackBtn = <HTMLButtonElement>document.getElementById('step2-back-btn');
+const progressBar = document.getElementById('progress-bar')!;
 
 let isGettingStartedClicked = false;
 let navItemUrl: string;
@@ -87,7 +88,9 @@ step1Form.addEventListener('submit', (e) => {
 	}
 
 	// simply cross fade without server request for now
-	crossFadeDivs('step1', 'step2', 500);
+	crossFadeDivs('step1', 'step2', 300);
+	progressBar.style.width = "66%";
+
 	/**
 	crossFadeDivs('step1', 'spinnerDiv', 300, () => spinnerDiv.style.display="flex");
 	(async () => {
@@ -117,6 +120,7 @@ step1Form.addEventListener('submit', (e) => {
 											}
 
 											crossFadeDivs('spinnerDiv', 'step2', 100);
+											progressBar.style.width = "66%";
 									}
 							})
 					}
@@ -137,7 +141,8 @@ step2Form.addEventListener('submit', (e) => {
 
 // on going back from step2 (step2->step1)
 step2BackBtn.addEventListener('click', () => {
-	crossFadeDivs('step2', 'step1', 500);
+	crossFadeDivs('step2', 'step1', 300);
+	progressBar.style.width = "33%";
 	(async () => {
 		await delay(400);
 		step2Form.reset();
