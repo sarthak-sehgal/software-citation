@@ -6,16 +6,19 @@ const delay = require('delay');
 let $: any = jQuery;
 
 /** Variables */
-const getStartedBtnDiv = document.getElementById('get-started-btn')!;
+const getStartedBtnDiv = <HTMLButtonElement>document.getElementById('get-started-btn')!;
 const navItems = document.getElementsByClassName('nav-link')!;
-const warningModalContinueBtn = document.getElementById('warningModalContinueBtn')!;
-const warningModalStayBtn = document.getElementById('warningModalStayBtn')!;
-const stepOneSubmitBtn = document.getElementById('stepOneSubmitBtn')!;
+const warningModalContinueBtn = <HTMLButtonElement>document.getElementById('warningModalContinueBtn')!;
+const warningModalStayBtn = <HTMLButtonElement>document.getElementById('warningModalStayBtn')!;
+const stepOneSubmitBtn = <HTMLButtonElement>document.getElementById('stepOneSubmitBtn')!;
 const zenodoToken = <HTMLInputElement>document.getElementById('zenodoToken')!;
 const githubURL = <HTMLInputElement>document.getElementById('githubURL')!;
 const stepOneError = document.getElementById('stepOneError')!;
 const spinnerDiv = document.getElementById('spinnerDiv')!;
 const ghUrlWarning = document.getElementById('ghUrlWarning')!;
+const step2Form = <HTMLFormElement>document.getElementById('step2-form')!;
+const step2BackBtn = <HTMLButtonElement>document.getElementById('step2-back-btn');
+
 let isGettingStartedClicked = false;
 let navItemUrl: string;
 let data: {
@@ -97,8 +100,7 @@ stepOneSubmitBtn.addEventListener('click', () => {
                         stepOneError.innerHTML = res.message;
                     } else {
                         if (res.status == 2) {
-                            ghUrlWarning.classList.remove('hide');
-                            ghUrlWarning.classList.add('show');
+                            ghUrlWarning.style.display = "block";
                         } else {
                             data.title = res.data?.title;
                             data.description = res.data?.description;
@@ -109,5 +111,23 @@ stepOneSubmitBtn.addEventListener('click', () => {
                 })
             }
         });
-    })();
+		})();
+});
+
+// on going from step2->step3
+step2Form.addEventListener('submit', function(event: any) { // TO DO: type for "event"
+	if (step2Form.checkValidity() === false) {
+		event.preventDefault();
+		event.stopPropagation();
+	}
+	step2Form.classList.add('was-validated');
+}, false);
+
+// on going back from step2 (step2->step1)
+step2BackBtn.addEventListener('click', () => {
+	crossFadeDivs('step2', 'step1', 500);
+	(async () => {
+		await delay(400);
+		step2Form.reset();
+	})();
 });

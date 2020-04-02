@@ -43,7 +43,7 @@
 					</div>
 				</div>
 				<div id="step1">
-					<form>
+					<form id="step1-form">
 						<div class="form-group">
 							<label for="githubURL">GitHub Repository URL</label>
 							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL">
@@ -65,12 +65,43 @@
 					</form>
 				</div>
 				<div id="step2">
-					<div id="ghUrlWarning" class="alert alert-warning alert-dismissible fade hide" role="alert">
+					<div id="ghUrlWarning" class="alert alert-warning alert-dismissible" role="alert">
 						<strong>Note: </strong>Could not fetch meta-data from GitHub. Please go back and check GitHub URL.
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						  <span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+					<form id="step2-form" class="needs-validation" novalidate>
+						<div class="form-group">
+							<label for="form-doi">DOI</label>
+							<input type="text" class="form-control" id="form-doi" placeholder="Enter DOI for your software" disabled required>
+							<!-- <small id="cffVersionHelp" class="form-text text-muted">Version </small> -->
+						</div>
+						<div class="form-group">
+							<label for="form-title">Title</label>
+							<input type="text" class="form-control" id="form-title" aria-describedby="title-help" placeholder="My Open Software" required>
+							<small id="title-help" class="form-text text-muted">The name of the software</small>
+						</div>
+						<div class="form-group">
+							<label for="form-release-date">Release date</label>
+							<input type="text" class="form-control" id="form-release-date" aria-describedby="release-date-help" placeholder="YYYY-MM-DD" required>
+							<small id="release-date-help" class="form-text text-muted">The release date of the software version</small>
+						</div>
+						<div class="form-group">
+							<label for="form-release-version">Release Version</label>
+							<input type="text" class="form-control" id="form-release-version" aria-describedby="release-version-help" placeholder="GitHub Release Version" required>
+							<small id="release-version-help" class="form-text text-muted">The version of the software</small>
+						</div>
+						<div class="form-group">
+							<label>Author(s)</label>
+							<!-- TO DO -->
+							<small class="form-text text-muted">The author(s) of the software</small>
+						</div>
+						<div id="step2-btns">
+							<button id="step2-back-btn" type="button" class="btn btn-warning">Go Back</button>
+							<button type="submit" class="btn btn-primary">Continue</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
