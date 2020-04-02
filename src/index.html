@@ -44,14 +44,14 @@
 				</div>
 				<div id="step1">
 					<form id="step1-form" class="needs-validation" novalidate>
-						<div class="form-group">
-							<label for="githubURL">GitHub Repository URL</label>
-							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL">
-						</div>
 						<div class="form-group required">
+							<label for="githubURL">GitHub Repository URL</label>
+							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL" required>
+						</div>
+						<!-- <div class="form-group required">
 							<label for="version">Version</label>
 							<input type="text" class="form-control" id="version" placeholder="Enter version number to be released" required>
-						</div>
+						</div> -->
 						<div class="form-group required">
 							<label for="zenodoToken">Zenodo Access Token</label>
 							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token" required>
@@ -71,28 +71,38 @@
 					<form id="step2-form" class="needs-validation" novalidate>
 						<div class="form-group required">
 							<label for="form-doi">DOI</label>
-							<input type="text" class="form-control" id="form-doi" placeholder="Enter DOI for your software" disabled required>
+							<input type="text" class="form-control" id="form-doi" placeholder="DOI for your software" disabled required>
 						</div>
 						<div class="form-group required">
 							<label for="form-title">Title</label>
-							<input type="text" class="form-control" id="form-title" aria-describedby="title-help" placeholder="My Open Software" required>
-							<small id="title-help" class="form-text text-muted">The name of the software</small>
+							<input type="text" class="form-control" id="form-title" aria-describedby="title-help" placeholder="BioJS" required>
+							<small id="title-help" class="form-text text-muted">The name of your open software</small>
+						</div>
+						<div class="form-group">
+							<label for="form-description">Abstract</label>
+							<input type="text" class="form-control" id="form-abstract" aria-describedby="abstract-help" placeholder="A library of JS components to represent biological data">
+							<small id="abstract-help" class="form-text text-muted">A description of the software</small>
+						</div>
+						<div class="form-group required">
+							<label for="form-message">Message</label>
+							<input type="text" class="form-control" id="form-message" aria-describedby="message-help" value="Please cite the following works when using this software." placeholder="Citation instructions" required>
+							<small id="message-help" class="form-text text-muted">Specify instructions to users on how to cite the software the CFF file is associated with</small>
 						</div>
 						<div class="form-group required">
 							<label for="form-release-date">Release date</label>
 							<input type="text" class="form-control" id="form-release-date" aria-describedby="release-date-help" placeholder="YYYY-MM-DD" required>
-							<small id="release-date-help" class="form-text text-muted">The release date of the software version</small>
+							<small id="release-date-help" class="form-text text-muted">The release date of this version for your software</small>
 						</div>
 						<div class="form-group required">
 							<label for="form-release-version">Release Version</label>
 							<input type="text" class="form-control" id="form-release-version" aria-describedby="release-version-help" placeholder="GitHub Release Version" required>
 							<small id="release-version-help" class="form-text text-muted">The version of the software</small>
 						</div>
-						<div class="form-group required">
+						<!-- TO DO -->
+						<!-- <div class="form-group required">
 							<label>Author(s)</label>
-							<!-- TO DO -->
 							<small class="form-text text-muted">The author(s) of the software</small>
-						</div>
+						</div> -->
 						<div id="step2-btns">
 							<button id="step2-back-btn" type="button" class="btn btn-warning">Go Back</button>
 							<button type="submit" class="btn btn-primary">Continue</button>

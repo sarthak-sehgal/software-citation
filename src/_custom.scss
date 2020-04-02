@@ -183,6 +183,16 @@ body {
 				#ghUrlWarning {
 					display: none;
 				}
+
+				#step2-btns {
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+
+					button {
+						margin: 0 10px;
+					}
+				}
 			}
 		}
 	}

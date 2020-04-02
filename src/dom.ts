@@ -19,6 +19,21 @@ const ghUrlWarning = document.getElementById('ghUrlWarning')!;
 const step2Form = <HTMLFormElement>document.getElementById('step2-form')!;
 const step2BackBtn = <HTMLButtonElement>document.getElementById('step2-back-btn');
 const progressBar = document.getElementById('progress-bar')!;
+const step2FormFields: {
+	title: HTMLInputElement,
+	date: HTMLInputElement,
+	version: HTMLInputElement,
+	doi: HTMLInputElement
+	message: HTMLInputElement,
+	abstract: HTMLInputElement
+} = {
+	title: <HTMLInputElement>document.getElementById('form-title')!,
+	date: <HTMLInputElement>document.getElementById('form-release-date')!,
+	version: <HTMLInputElement>document.getElementById('form-release-version')!,
+	doi: <HTMLInputElement>document.getElementById('form-doi')!,
+	message: <HTMLInputElement>document.getElementById('form-message')!,
+	abstract: <HTMLInputElement>document.getElementById('form-abstract')!
+}
 
 let isGettingStartedClicked = false;
 let navItemUrl: string;
@@ -27,7 +42,7 @@ let data: {
     date?: string,
     version?: string,
     title?: string,
-    description?: string
+    abstract?: string
 } = {};
 
 /** Utility Functions */
@@ -88,10 +103,9 @@ step1Form.addEventListener('submit', (e) => {
 	}
 
 	// simply cross fade without server request for now
-	crossFadeDivs('step1', 'step2', 300);
-	progressBar.style.width = "66%";
+	// crossFadeDivs('step1', 'step2', 300);
+	// progressBar.style.width = "66%";
 
-	/**
 	crossFadeDivs('step1', 'spinnerDiv', 300, () => spinnerDiv.style.display="flex");
 	(async () => {
 			await delay(300);
@@ -115,10 +129,11 @@ step1Form.addEventListener('submit', (e) => {
 											if (res.status == 2) {
 													ghUrlWarning.style.display = "block";
 											} else {
-													data.title = res.data?.title;
-													data.description = res.data?.description;
+													data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
+													data.abstract = res.data?.description?.replace(/[^\x00-\x7F]/g, "");
 											}
 
+											setFormData();
 											crossFadeDivs('spinnerDiv', 'step2', 100);
 											progressBar.style.width = "66%";
 									}
@@ -126,8 +141,21 @@ step1Form.addEventListener('submit', (e) => {
 					}
 			});
 	})();
-	*/
 }, false);
+
+let setFormData = () => {
+	step2FormFields.title.value = data.title || "";
+	step2FormFields.doi.value = data.doi || "";
+	step2FormFields.abstract.value = data.abstract || "";
+	step2FormFields.date.value = getDate();
+};
+
+function getDate () {
+	let date = new Date();
+	const offset = date.getTimezoneOffset();
+	date = new Date(date.getTime() + (offset*60*1000));
+	return date.toISOString().split('T')[0];
+}
 
 // on going from step2->step3
 step2Form.addEventListener('submit', (e) => {
