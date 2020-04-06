@@ -22,6 +22,10 @@ This project is a part of [eLife Innovation Leaders 2020](https://elifesciences.
 - [x] Landing page
 - [x] Step 1 UI
 - [x] Zenodo API server integration
-- [ ] Step 2 UI (Display sample metadata form with placeholders)
-- [ ] Generate .cff and .json and store on server temporarily
+- [x] Step 2 UI (Display sample metadata form with placeholders)
+- [x] Generate .cff and store on server
+- [ ] Enable users to add authors in step 2
 - [ ] Code of conduct, Contributing Guidelines
+- [ ] Create static pages (About, FAQ, Request Feature)
+- [ ] Setup on server (AWS?)
+- [ ] Run cron job to remove CFF files older than 1 hour
