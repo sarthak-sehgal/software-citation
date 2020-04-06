@@ -19,16 +19,17 @@ const ghUrlWarning = document.getElementById('ghUrlWarning')!;
 const step2Form = <HTMLFormElement>document.getElementById('step2-form')!;
 const step2BackBtn = <HTMLButtonElement>document.getElementById('step2-back-btn');
 const progressBar = document.getElementById('progress-bar')!;
+const step3BackBtn = <HTMLButtonElement>document.getElementById('step3-back-btn')!;
 const step2FormFields: {
 	title: HTMLInputElement,
-	date: HTMLInputElement,
+	["date-released"]: HTMLInputElement,
 	version: HTMLInputElement,
 	doi: HTMLInputElement
 	message: HTMLInputElement,
 	abstract: HTMLInputElement
 } = {
 	title: <HTMLInputElement>document.getElementById('form-title')!,
-	date: <HTMLInputElement>document.getElementById('form-release-date')!,
+	["date-released"]: <HTMLInputElement>document.getElementById('form-release-date')!,
 	version: <HTMLInputElement>document.getElementById('form-release-version')!,
 	doi: <HTMLInputElement>document.getElementById('form-doi')!,
 	message: <HTMLInputElement>document.getElementById('form-message')!,
@@ -37,12 +38,26 @@ const step2FormFields: {
 
 let isGettingStartedClicked = false;
 let navItemUrl: string;
+
+type authorType = {
+	["family-names"]: string,
+	["given-names"]: string,
+	orcid?: string,
+	email?: string,
+	webstie?: string
+};
+
 let data: {
     doi?: string,
     date?: string,
     version?: string,
     title?: string,
-    abstract?: string
+    abstract?: string,
+		keywords?: [string],
+		license?: string,
+		repository?: string,
+		url?: string,
+		authors?: [authorType]
 } = {};
 
 /** Utility Functions */
@@ -149,7 +164,7 @@ let setFormData = () => {
 	step2FormFields.title.value = data.title || "";
 	step2FormFields.doi.value = data.doi || "";
 	step2FormFields.abstract.value = data.abstract || "";
-	step2FormFields.date.value = getDate();
+	step2FormFields["date-released"].value = getDate();
 };
 
 function getDate () {
@@ -167,6 +182,8 @@ step2Form.addEventListener('submit', (e) => {
 		step2Form.classList.add('was-validated');
 		return;
 	}
+	progressBar.style.width = "100%";
+	crossFadeDivs('step2', 'step3', 300);
 }, false);
 
 // on going back from step2 (step2->step1)
@@ -177,4 +194,10 @@ step2BackBtn.addEventListener('click', () => {
 		await delay(400);
 		step2Form.reset();
 	})();
+});
+
+// on going back from step3->step2
+step3BackBtn.addEventListener('click', () => {
+	crossFadeDivs('step3', 'step2', 300);
+	progressBar.style.width = "66%";
 });

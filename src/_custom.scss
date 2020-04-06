@@ -194,6 +194,27 @@ body {
 					}
 				}
 			}
+
+			#step3 {
+				display: none;
+
+				h3 {
+					text-align: center;
+					margin: 20px 0px;
+				}
+
+				#download-btn-wrapper {
+					display: flex;
+					flex: 1;
+					width: 100%;
+					justify-content: center;
+					margin-top: 40px;
+
+					button {
+						margin: 0px 10px;
+					}
+				}
+			}
 		}
 	}
 }
