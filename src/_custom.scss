@@ -159,6 +159,11 @@ body {
 			#spinnerDiv {
 				height: 100%;
 				display: flex;
+				flex-direction: column;
+
+				#spinner-msg {
+					margin-top: 10px;
+				}
 			}
 
 			.error-msg {
@@ -172,7 +177,7 @@ body {
 
 			#step1 {
 				// display: none;
-				#stepOneError {
+				#step1-error {
 					display: none;
 				}
 			}
@@ -192,6 +197,10 @@ body {
 					button {
 						margin: 0 10px;
 					}
+				}
+
+				#step2-error {
+					display: none;
 				}
 			}
 
@@ -213,6 +222,10 @@ body {
 					button {
 						margin: 0px 10px;
 					}
+				}
+
+				#step3-error {
+					display: none;
 				}
 			}
 		}
