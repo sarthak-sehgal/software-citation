@@ -2,6 +2,8 @@
 <html>
 
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Software Citation</title>
 </head>
 
@@ -14,10 +16,10 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-item nav-link active" href="#" data-url='./'>Home <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link" href="#" data-url='./about'>About</a>
-					<a class="nav-item nav-link" href="#" data-url='./faq'>FAQ</a>
-					<a class="nav-item nav-link" href="#" data-url='./request'>Request Feature</a>
+					<a class="nav-item nav-link active" href="/" data-url='./'>Home <span class="sr-only">(current)</span></a>
+					<a class="nav-item nav-link" href="/about.html" data-url='./about.html'>About</a>
+					<a class="nav-item nav-link" href="/faq.html" data-url='./faq.html'>FAQ</a>
+					<a class="nav-item nav-link" href="" data-url=''>Request Feature</a>
 				</div>
 			</div>
 		</nav>
@@ -28,7 +30,7 @@
 				<h1>Software Citation</h1>
 				<p>Generate a CFF file for your open source software and upload it on your repository before creating a release. <a href="http://citation-file-format.github.io/" target="_blank" rel="noopener">CITATION.cff</a> files are plain text files with human- and machine-readable citation information for software. Code developers can include them in their repositories to let others know how to correctly cite their software.</p>
 				<div class="">
-					<button type="button" class="btn btn-secondary">Learn More</button>
+					<button type="button" class="btn btn-secondary" id="learn-more-btn">Learn More</button>
 					<button id="get-started-btn" type="button" class="btn btn-primary">Get Started</button>
 				</div>
 		</div>
@@ -47,7 +49,7 @@
 					<form id="step1-form" class="needs-validation" novalidate>
 						<div class="form-group required">
 							<label for="githubURL">GitHub Repository URL</label>
-							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL" value="github.com/biojs/biojs" required> <!-- TO DO: Remove default value -->
+							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL" required> <!-- TO DO: Remove default value -->
 						</div>
 						<!-- <div class="form-group required">
 							<label for="version">Version</label>

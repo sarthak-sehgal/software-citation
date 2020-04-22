@@ -62,7 +62,21 @@ module.exports = {
       filename: 'index.html',
       chunks: ['index_head', 'dom']
     }),
-    new HtmlWebpackInjector()
+		new HtmlWebpackInjector(),
+		new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'about.html'),
+      inject: true,
+      filename: 'about.html',
+      chunks: ['index_head']
+    }),
+		new HtmlWebpackInjector(),
+		new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', 'faq.html'),
+      inject: true,
+      filename: 'faq.html',
+      chunks: ['index_head']
+    }),
+		new HtmlWebpackInjector()
   ],
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ],

@@ -9,6 +9,9 @@ let $: any = jQuery;
 const getStartedBtnDiv = <HTMLButtonElement>(
   document.getElementById("get-started-btn")!
 );
+const learnMoreBtn = <HTMLButtonElement>(
+  document.getElementById("learn-more-btn")!
+);
 const navItems = document.getElementsByClassName("nav-link")!;
 const warningModalContinueBtn = <HTMLButtonElement>(
   document.getElementById("warningModalContinueBtn")!
@@ -109,6 +112,7 @@ for (let i = 0; i < navItems.length; i++) {
 
 // actions for the warning modal
 warningModalContinueBtn.addEventListener("click", () => {
+  isGettingStartedClicked = false;
   window.location.href = navItemUrl;
 });
 warningModalStayBtn.addEventListener("click", () => {
@@ -201,10 +205,10 @@ step2Form.addEventListener(
     data.abstract = step2FormFields.abstract.value;
     data["date-released"] = step2FormFields["date-released"].value;
     data.version = step2FormFields.version.value;
-		// replace {{DOI}} with actual DOI
-		let str = doiListItem.innerHTML;
-		str = str.replace("{{DOI}}", data.doi || "");
-		doiListItem.innerHTML = str;
+    // replace {{DOI}} with actual DOI
+    let str = doiListItem.innerHTML;
+    str = str.replace("{{DOI}}", data.doi || "");
+    doiListItem.innerHTML = str;
 
     crossFadeDivs("step2", "spinnerDiv", 300);
     spinnerMsg.innerHTML = "Generating CITATION.cff...";
@@ -254,9 +258,9 @@ downloadCffBtn.addEventListener(
       step3Error.innerHTML =
         "Some error occurred. Please go back and try again.";
       return;
-		}
+    }
 
-		downloadCff(fileName);
+    downloadCff(fileName);
   },
   false
 );
