@@ -100,7 +100,8 @@ getStartedBtnDiv.addEventListener("click", () => {
 
 // show warning modal on clicking nav item
 for (let i = 0; i < navItems.length; i++) {
-  navItems[i].addEventListener("click", () => {
+  navItems[i].addEventListener("click", (e) => {
+		e.preventDefault();
     if (isGettingStartedClicked == true) {
       navItemUrl = navItems[i].getAttribute("data-url")!;
       $("#warningModal").modal("show");
@@ -112,7 +113,6 @@ for (let i = 0; i < navItems.length; i++) {
 
 // actions for the warning modal
 warningModalContinueBtn.addEventListener("click", () => {
-  isGettingStartedClicked = false;
   window.location.href = navItemUrl;
 });
 warningModalStayBtn.addEventListener("click", () => {
