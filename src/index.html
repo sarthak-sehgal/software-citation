@@ -120,11 +120,21 @@
 					<h3>Your CITATION.CFF file has been generated!</h3>
 					<p id="step3-error" class="error-msg"></p>
 					<p>Next steps:</p>
-					<ul>
-						<li>Download the CFF file</li>
-						<li>Upload the file on your GitHub repository in the root folder</li>
-						<li id="doi-list-item">Publish the release on Zenodo with the DOI <strong>{{DOI}}</strong> or let us do that for you!</li>
-					</ul>
+					<ol>
+						<li>
+							Upload the CFF file on your GitHub repository, preferably in the root directory. Optionally, update your <code>README.md</code> file to inform user about the <code>CITATION.cff</code> file
+						</li>
+						<li>
+							Create a new release on GitHub with the release version mentioned in the CFF file. Please update the CFF file if you want to release a different version.<br/>
+							Download the <code>tar.gz</code> release file from GitHub.
+						</li>
+						<li>
+							Login to Zenodo and <a href="https://zenodo.org/deposit/new/" target="_blank" rel="noopener">create a new upload</a>.
+						</li>
+						<li id="doi-list-item">
+							In the DOI field, mention the DOI <strong>{{DOI}}</strong>.
+						</li>
+					</ol>
 
 					<div id="download-btn-wrapper">
 						<button type="button" class="btn btn-warning" id="step3-back-btn">Go Back</button>
