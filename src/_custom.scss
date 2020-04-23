@@ -14,6 +14,28 @@ body {
 	min-height: calc(100vh - 60px);
 }
 
+#beta-notice {
+	background-color: #007bff;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	padding: 5px 10px;
+	width: 100vw;
+	font-weight: 300;
+	font-size: 0.9rem;
+
+	a {
+		padding-left: 5px;
+		text-decoration: underline;
+		color: #fff;
+
+		&:active, &:hover, &:visited {
+			color: inherit;
+		}
+	}
+}
+
 .form-group {
 	&.required {
 		label:after {
