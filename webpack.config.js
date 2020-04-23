@@ -76,6 +76,13 @@ module.exports = {
       filename: 'faq.html',
       chunks: ['index_head']
     }),
+		new HtmlWebpackInjector(),
+		new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src', '404.html'),
+      inject: true,
+      filename: '404.html',
+      chunks: ['index_head']
+    }),
 		new HtmlWebpackInjector()
   ],
   resolve: {
