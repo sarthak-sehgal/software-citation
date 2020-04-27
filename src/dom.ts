@@ -216,7 +216,8 @@ let setFormData = () => {
   step2FormFields.abstract.value = data.abstract || "";
 	step2FormFields["date-released"].value = getDate();
 
-	if (step2FormFields.doi.value == "") step2FormFields.doi.disabled = false;
+	if (!data.doi) step2FormFields.doi.disabled = false;
+	else step2FormFields.doi.disabled = true;
 };
 
 function getDate() {
@@ -272,6 +273,7 @@ step2Form.addEventListener(
 
 // on going back: step2->step1
 step2BackBtn.addEventListener("click", () => {
+	data = {};
   crossFadeDivs("step2", "step1", 300);
   progressBar.style.width = "33%";
   (async () => {
