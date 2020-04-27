@@ -8,8 +8,8 @@ module.exports = {
       dom: './src/dom.ts'
   },
   // delevelopment config
-  devtool: 'inline-source-map',
-  mode: 'development',
+  // devtool: 'inline-source-map',
+  // mode: 'development',
   devServer: {
     port: 8080
   },

@@ -14,7 +14,7 @@ function getDoi(accessToken: string, cb: (obj: resObjType) => void): void {
       "content-type": "application/json",
     },
     // **only for development**
-    mode: "cors",
+    // mode: "cors",
     body: JSON.stringify({
       token: accessToken,
     }),
@@ -48,7 +48,7 @@ function getGHData(githubUrl: string, cb: (obj: resObjType) => void): void {
       "content-type": "application/json",
     },
     // **only for development**
-    mode: "cors",
+    // mode: "cors",
     body: JSON.stringify({
       githubUrl,
     }),
@@ -84,7 +84,7 @@ function generateCff(data: cffDataType, cb: (obj: resObjType) => void): void {
       "content-type": "application/json",
     },
     // **only for development**
-    mode: "cors",
+    // mode: "cors",
     body: JSON.stringify({
       ...data,
     }),
