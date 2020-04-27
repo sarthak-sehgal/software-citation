@@ -1,5 +1,8 @@
-# [WIP] Software Citation Project
+# Software Citation Project: Beta Out!
 _"Enabling research software engineers to add citability in open source software without hassle."_
+
+**Check out the beta release at [http://citation.software](http://citation.software) or [https://software-citation.herokuapp.com/](https://software-citation.herokuapp.com/)**
+
 ![Website Preview](./preview.gif)
 
 Software Citation Project is a project aimed at open source software developers who want to enable citability in their software. Open source softwares and packages are widely used and a common problem the developers face is establishing citability to their softwares. Citability is important for researchers for professional as well as personal reasons. It gives them the due credit and recognition. The most common way to enable citation is attaching a DOI through services like [Zenodo](https://zenodo.org) but you would ideally want to attach a [CFF file](https://citation-file-format.github.io) to your software as well. `CITATION.cff` files are plain text files with human- and machine-readable citation information for software. Code developers can include them in their repositories to let others know how to correctly cite their software.
@@ -24,8 +27,8 @@ This project is a part of [eLife Innovation Leaders 2020](https://elifesciences.
 - [x] Zenodo API server integration
 - [x] Step 2 UI (Display sample metadata form with placeholders)
 - [x] Generate .cff and store on server
-- [ ] Enable users to add authors in step 2
-- [ ] Code of conduct, Contributing Guidelines
-- [ ] Create static pages (About, FAQ, Request Feature)
-- [ ] Setup on server (AWS?)
+- [x] Enable users to add authors in step 2
+- [x] Code of conduct, Contributing Guidelines
+- [x] Create static pages (About, FAQ, Request Feature)
+- [x] Setup server
 - [ ] Run cron job to remove CFF files older than 1 hour
