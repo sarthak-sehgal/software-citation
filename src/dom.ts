@@ -46,8 +46,8 @@ const step2FormFields: {
   version: HTMLInputElement;
   doi: HTMLInputElement;
   message: HTMLInputElement;
-	abstract: HTMLInputElement;
-	authors: HTMLInputElement;
+  abstract: HTMLInputElement;
+  authors: HTMLInputElement;
 } = {
   title: <HTMLInputElement>document.getElementById("form-title")!,
   ["date-released"]: <HTMLInputElement>(
@@ -56,8 +56,8 @@ const step2FormFields: {
   version: <HTMLInputElement>document.getElementById("form-release-version")!,
   doi: <HTMLInputElement>document.getElementById("form-doi")!,
   message: <HTMLInputElement>document.getElementById("form-message")!,
-	abstract: <HTMLInputElement>document.getElementById("form-abstract")!,
-	authors: <HTMLInputElement>document.getElementById("form-release-author")!
+  abstract: <HTMLInputElement>document.getElementById("form-abstract")!,
+  authors: <HTMLInputElement>document.getElementById("form-release-author")!
 };
 
 let isGettingStartedClicked = false;
@@ -93,8 +93,8 @@ function crossFadeDivs(
 /** DOM changes */
 // learn more button click
 learnMoreBtn.addEventListener("click", (e) => {
-	e.preventDefault();
-	window.location.href = "/about";
+  e.preventDefault();
+  window.location.href = "/about";
 })
 
 // startup changes
@@ -102,7 +102,7 @@ fadeOutDiv("spinnerDiv", 0);
 
 // cross fade on get started button click
 getStartedBtnDiv.addEventListener("click", (e) => {
-	e.preventDefault();
+  e.preventDefault();
   isGettingStartedClicked = true;
   crossFadeDivs("landing", "steps", 500);
 });
@@ -110,7 +110,7 @@ getStartedBtnDiv.addEventListener("click", (e) => {
 // show warning modal on clicking nav item
 for (let i = 0; i < navItems.length; i++) {
   navItems[i].addEventListener("click", (e) => {
-		e.preventDefault();
+    e.preventDefault();
     if (isGettingStartedClicked == true) {
       navItemUrl = navItems[i].getAttribute("data-url")!;
       $("#warningModal").modal("show");
@@ -132,8 +132,8 @@ warningModalStayBtn.addEventListener("click", () => {
 step1Form.addEventListener(
   "submit",
   (e) => {
-		step1Error.innerHTML = "";
-		fadeOutDiv("step1-error", 100);
+    step1Error.innerHTML = "";
+    fadeOutDiv("step1-error", 100);
     e.preventDefault();
     e.stopPropagation();
     if (step1Form.checkValidity() === false) {
@@ -148,63 +148,63 @@ step1Form.addEventListener(
     crossFadeDivs("step1", "spinnerDiv", 300);
     spinnerMsg.innerHTML = "Fetching data...";
     (async () => {
-			await delay(300);
-			if (zenodoToken.value.trim() == '') {
-				console.log("Getting data from GitHub");
-				getGHData(githubURL.value, (res: resObjType) => {
-					if (res.status == 0) {
-						crossFadeDivs("spinnerDiv", "step1", 100);
-						fadeInDiv("step1-error", 150);
-						step1Error.innerHTML = res.message;
-					} else {
-						if (res.status == 2) {
-							ghUrlWarning.style.display = "block";
-						} else {
-							data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
-							data.abstract = res.data?.description?.replace(
-								/[^\x00-\x7F]/g,
-								""
-							);
-						}
+      await delay(300);
+      if (zenodoToken.value.trim() == '') {
+        console.log("Getting data from GitHub");
+        getGHData(githubURL.value, (res: resObjType) => {
+          if (res.status == 0) {
+            crossFadeDivs("spinnerDiv", "step1", 100);
+            fadeInDiv("step1-error", 150);
+            step1Error.innerHTML = res.message;
+          } else {
+            if (res.status == 2) {
+              ghUrlWarning.style.display = "block";
+            } else {
+              data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
+              data.abstract = res.data?.description?.replace(
+                /[^\x00-\x7F]/g,
+                ""
+              );
+            }
 
-						setFormData();
-						crossFadeDivs("spinnerDiv", "step2", 100);
-						progressBar.style.width = "66%";
-					}
-				});
-			} else {
-				getDoi(zenodoToken.value, (res: resObjType) => {
-					if (res.status == 0) {
-						crossFadeDivs("spinnerDiv", "step1", 100);
-						fadeInDiv("step1-error", 150);
-						step1Error.innerHTML = res.message;
-					} else {
-						data.doi = res.message;
-						console.log("Getting data from GitHub");
-						getGHData(githubURL.value, (res: resObjType) => {
-							if (res.status == 0) {
-								crossFadeDivs("spinnerDiv", "step1", 100);
-								fadeInDiv("step1-error", 150);
-								step1Error.innerHTML = res.message;
-							} else {
-								if (res.status == 2) {
-									ghUrlWarning.style.display = "block";
-								} else {
-									data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
-									data.abstract = res.data?.description?.replace(
-										/[^\x00-\x7F]/g,
-										""
-									);
-								}
-	
-								setFormData();
-								crossFadeDivs("spinnerDiv", "step2", 100);
-								progressBar.style.width = "66%";
-							}
-						});
-					}
-				});
-			}
+            setFormData();
+            crossFadeDivs("spinnerDiv", "step2", 100);
+            progressBar.style.width = "66%";
+          }
+        });
+      } else {
+        getDoi(zenodoToken.value, (res: resObjType) => {
+          if (res.status == 0) {
+            crossFadeDivs("spinnerDiv", "step1", 100);
+            fadeInDiv("step1-error", 150);
+            step1Error.innerHTML = res.message;
+          } else {
+            data.doi = res.message;
+            console.log("Getting data from GitHub");
+            getGHData(githubURL.value, (res: resObjType) => {
+              if (res.status == 0) {
+                crossFadeDivs("spinnerDiv", "step1", 100);
+                fadeInDiv("step1-error", 150);
+                step1Error.innerHTML = res.message;
+              } else {
+                if (res.status == 2) {
+                  ghUrlWarning.style.display = "block";
+                } else {
+                  data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
+                  data.abstract = res.data?.description?.replace(
+                    /[^\x00-\x7F]/g,
+                    ""
+                  );
+                }
+  
+                setFormData();
+                crossFadeDivs("spinnerDiv", "step2", 100);
+                progressBar.style.width = "66%";
+              }
+            });
+          }
+        });
+      }
     })();
   },
   false
@@ -214,10 +214,10 @@ let setFormData = () => {
   step2FormFields.title.value = data.title || "";
   step2FormFields.doi.value = data.doi || "";
   step2FormFields.abstract.value = data.abstract || "";
-	step2FormFields["date-released"].value = getDate();
+  step2FormFields["date-released"].value = getDate();
 
-	if (!data.doi) step2FormFields.doi.disabled = false;
-	else step2FormFields.doi.disabled = true;
+  if (!data.doi) step2FormFields.doi.disabled = false;
+  else step2FormFields.doi.disabled = true;
 };
 
 function getDate() {
@@ -240,11 +240,11 @@ step2Form.addEventListener(
     }
     data.title = step2FormFields.title.value;
     data.message = step2FormFields.message.value;
-		data.abstract = step2FormFields.abstract.value;
-		data.authors = step2FormFields.authors.value;
+    data.abstract = step2FormFields.abstract.value;
+    data.authors = step2FormFields.authors.value;
     data["date-released"] = step2FormFields["date-released"].value;
-		data.version = step2FormFields.version.value;
-		data.doi = step2FormFields.doi.value;
+    data.version = step2FormFields.version.value;
+    data.doi = step2FormFields.doi.value;
 
     // replace {{DOI}} with actual DOI
     let str = doiListItem.innerHTML;
@@ -273,7 +273,7 @@ step2Form.addEventListener(
 
 // on going back: step2->step1
 step2BackBtn.addEventListener("click", () => {
-	data = {};
+  data = {};
   crossFadeDivs("step2", "step1", 300);
   progressBar.style.width = "33%";
   (async () => {

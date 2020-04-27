@@ -10,15 +10,15 @@ export type resObjType = {
 };
 
 export type cffDataType = {
-	doi?: string,
-	["date-released"]?: string,
-	version?: string,
-	title?: string,
-	abstract?: string,
-	keywords?: [string],
-	license?: string,
-	repository?: string,
-	url?: string,
-	authors?: string,
-	message?: string
+  doi?: string,
+  ["date-released"]?: string,
+  version?: string,
+  title?: string,
+  abstract?: string,
+  keywords?: [string],
+  license?: string,
+  repository?: string,
+  url?: string,
+  authors?: string,
+  message?: string
 };

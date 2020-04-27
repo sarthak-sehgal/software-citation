@@ -115,7 +115,7 @@ function downloadCff(fileName: string): void {
   newWindow.focus();
   newWindow.onblur = function () {
     newWindow.close();
-	};
+  };
 }
 
 export { getDoi, getGHData, generateCff, downloadCff };

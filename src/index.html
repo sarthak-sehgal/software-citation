@@ -2,177 +2,177 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Software Citation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Citation</title>
 </head>
 
 <body>
-	<header>
-		<div id="beta-notice">
-			<span>The website is currently in public beta mode. Facing an issue? Please <a href="https://github.com/sarthak-sehgal/software-citation/issues" target="_blank" rel="noopener">let us know</a></span>
-		</div>
-		<nav class="navbar navbar-expand-lg navbar-light justify-content-between">
-			<a class="navbar-brand mb-0 h1" href="#">Software Citation</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-				<div class="navbar-nav">
-					<a class="nav-item nav-link active" href="/" data-url='./'>Home <span class="sr-only">(current)</span></a>
-					<a class="nav-item nav-link" href="/about" data-url='./about'>About</a>
-					<a class="nav-item nav-link" href="/faq" data-url='./faq'>FAQ</a>
-				</div>
-			</div>
-		</nav>
-	</header>
+  <header>
+    <div id="beta-notice">
+      <span>The website is currently in public beta mode. Facing an issue? Please <a href="https://github.com/sarthak-sehgal/software-citation/issues" target="_blank" rel="noopener">let us know</a></span>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+      <a class="navbar-brand mb-0 h1" href="#">Software Citation</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="/" data-url='./'>Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="/about" data-url='./about'>About</a>
+          <a class="nav-item nav-link" href="/faq" data-url='./faq'>FAQ</a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-	<main role="main" class="container d-flex flex-column justify-content-center align-items-center">
-		<div id="landing" class="row lead justify-content-center align-items-center text-center">
-				<h1>Software Citation</h1>
-				<p>The Software Citation Project provides a hassle-free experience to establish better citation standards for your open software. Generate a DOI and CFF file for your open source software and upload it on your repository before creating a release. <a href="http://citation-file-format.github.io/" target="_blank" rel="noopener">CITATION.cff</a> files are plain text file containing citation information for software.</p>
-				<div id="landing-btns">
-					<button type="button" class="btn btn-secondary" id="learn-more-btn">Learn More</button>
-					<button id="get-started-btn" type="button" class="btn btn-primary">Get Started</button>
-				</div>
-		</div>
-		<div id="steps">
-			<div id="progress-bar-container" class="progress">
-				<div class="progress-bar" id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-			</div>
-			<div id="content">
-				<div id="spinnerDiv" class="justify-content-center align-items-center">
-					<div class="spinner-border text-primary" role="status">
-						<span class="sr-only">Loading...</span>
-					</div>
-					<span id="spinner-msg"></span>
-				</div>
-				<div id="step1">
-					<form id="step1-form" class="needs-validation" novalidate>
-						<div class="form-group required">
-							<label for="githubURL">GitHub Repository URL</label>
-							<input type="text" class="form-control" id="githubURL" placeholder="GitHub URL" required>
-						</div>
-						<!-- <div class="form-group required">
-							<label for="version">Version</label>
-							<input type="text" class="form-control" id="version" placeholder="Enter version number to be released" required>
-						</div> -->
-						<div class="form-group">
-							<label for="zenodoToken">Zenodo Access Token</label>
-							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token">
-							<small id="zenodoHelp" class="form-text text-muted">Please login to Zenodo and <a href="https://zenodo.org/account/settings/applications/tokens/new/" target="_blank" rel="noopener">generate an access token</a> with write permissions. We do not store your token. Do not want to share your token? <a href="/faq">Please refer to our FAQ.</a></small>
-						</div>
-						<p id="step1-error" class="error-msg"></p>
-						<button type="submit" class="btn btn-primary">Next</button>
-					</form>
-				</div>
-				<div id="step2">
-					<p id="step2-error" class="error-msg"></p>
-					<div id="ghUrlWarning" class="alert alert-warning alert-dismissible" role="alert">
-						<strong>Note: </strong>Could not fetch meta-data from GitHub. Please go back and check GitHub URL.
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						  <span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<form id="step2-form" class="needs-validation" novalidate>
-						<div class="form-group required">
-							<label for="form-doi">DOI</label>
-							<input type="text" class="form-control" id="form-doi" placeholder="DOI for your software" disabled required>
-						</div>
-						<div class="form-group required">
-							<label for="form-title">Title</label>
-							<input type="text" class="form-control" id="form-title" aria-describedby="title-help" placeholder="BioJS" required>
-							<small id="title-help" class="form-text text-muted">The name of your open software</small>
-						</div>
-						<div class="form-group">
-							<label for="form-description">Abstract</label>
-							<input type="text" class="form-control" id="form-abstract" aria-describedby="abstract-help" placeholder="A library of JS components to represent biological data">
-							<small id="abstract-help" class="form-text text-muted">A description of the software</small>
-						</div>
-						<div class="form-group required">
-							<label for="form-message">Message</label>
-							<input type="text" class="form-control" id="form-message" aria-describedby="message-help" value="Please cite the following works when using this software." placeholder="Citation instructions" required>
-							<small id="message-help" class="form-text text-muted">Specify instructions to users on how to cite the software the CFF file is associated with</small>
-						</div>
-						<div class="form-group required">
-							<label for="form-release-date">Release date</label>
-							<input type="text" class="form-control" id="form-release-date" aria-describedby="release-date-help" placeholder="YYYY-MM-DD" required>
-							<small id="release-date-help" class="form-text text-muted">The release date of this version for your software</small>
-						</div>
-						<div class="form-group required">
-							<label for="form-release-version">Release Version</label>
-							<input type="text" class="form-control" id="form-release-version" aria-describedby="release-version-help" placeholder="GitHub Release Version" required>
-							<small id="release-version-help" class="form-text text-muted">The version of the software</small>
-						</div>
+  <main role="main" class="container d-flex flex-column justify-content-center align-items-center">
+    <div id="landing" class="row lead justify-content-center align-items-center text-center">
+        <h1>Software Citation</h1>
+        <p>The Software Citation Project provides a hassle-free experience to establish better citation standards for your open software. Generate a DOI and CFF file for your open source software and upload it on your repository before creating a release. <a href="http://citation-file-format.github.io/" target="_blank" rel="noopener">CITATION.cff</a> files are plain text file containing citation information for software.</p>
+        <div id="landing-btns">
+          <button type="button" class="btn btn-secondary" id="learn-more-btn">Learn More</button>
+          <button id="get-started-btn" type="button" class="btn btn-primary">Get Started</button>
+        </div>
+    </div>
+    <div id="steps">
+      <div id="progress-bar-container" class="progress">
+        <div class="progress-bar" id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div id="content">
+        <div id="spinnerDiv" class="justify-content-center align-items-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <span id="spinner-msg"></span>
+        </div>
+        <div id="step1">
+          <form id="step1-form" class="needs-validation" novalidate>
+            <div class="form-group required">
+              <label for="githubURL">GitHub Repository URL</label>
+              <input type="text" class="form-control" id="githubURL" placeholder="GitHub URL" required>
+            </div>
+            <!-- <div class="form-group required">
+              <label for="version">Version</label>
+              <input type="text" class="form-control" id="version" placeholder="Enter version number to be released" required>
+            </div> -->
+            <div class="form-group">
+              <label for="zenodoToken">Zenodo Access Token</label>
+              <input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token">
+              <small id="zenodoHelp" class="form-text text-muted">Please login to Zenodo and <a href="https://zenodo.org/account/settings/applications/tokens/new/" target="_blank" rel="noopener">generate an access token</a> with write permissions. We do not store your token. Do not want to share your token? <a href="/faq">Please refer to our FAQ.</a></small>
+            </div>
+            <p id="step1-error" class="error-msg"></p>
+            <button type="submit" class="btn btn-primary">Next</button>
+          </form>
+        </div>
+        <div id="step2">
+          <p id="step2-error" class="error-msg"></p>
+          <div id="ghUrlWarning" class="alert alert-warning alert-dismissible" role="alert">
+            <strong>Note: </strong>Could not fetch meta-data from GitHub. Please go back and check GitHub URL.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="step2-form" class="needs-validation" novalidate>
+            <div class="form-group required">
+              <label for="form-doi">DOI</label>
+              <input type="text" class="form-control" id="form-doi" placeholder="DOI for your software" disabled required>
+            </div>
+            <div class="form-group required">
+              <label for="form-title">Title</label>
+              <input type="text" class="form-control" id="form-title" aria-describedby="title-help" placeholder="BioJS" required>
+              <small id="title-help" class="form-text text-muted">The name of your open software</small>
+            </div>
+            <div class="form-group">
+              <label for="form-description">Abstract</label>
+              <input type="text" class="form-control" id="form-abstract" aria-describedby="abstract-help" placeholder="A library of JS components to represent biological data">
+              <small id="abstract-help" class="form-text text-muted">A description of the software</small>
+            </div>
+            <div class="form-group required">
+              <label for="form-message">Message</label>
+              <input type="text" class="form-control" id="form-message" aria-describedby="message-help" value="Please cite the following works when using this software." placeholder="Citation instructions" required>
+              <small id="message-help" class="form-text text-muted">Specify instructions to users on how to cite the software the CFF file is associated with</small>
+            </div>
+            <div class="form-group required">
+              <label for="form-release-date">Release date</label>
+              <input type="text" class="form-control" id="form-release-date" aria-describedby="release-date-help" placeholder="YYYY-MM-DD" required>
+              <small id="release-date-help" class="form-text text-muted">The release date of this version for your software</small>
+            </div>
+            <div class="form-group required">
+              <label for="form-release-version">Release Version</label>
+              <input type="text" class="form-control" id="form-release-version" aria-describedby="release-version-help" placeholder="GitHub Release Version" required>
+              <small id="release-version-help" class="form-text text-muted">The version of the software</small>
+            </div>
 
-						<div class="form-group required">
-							<label>Author(s)</label>
-							<input type="text" class="form-control" id="form-release-author" aria-describedby="author-help" placeholder="name; email, Steve Page; steve@stanford.edu" required>
-							<small id="author-help" class="form-text text-muted">Separate each author by a comma (,). An author can have a name and an e-mail separated by a semi-colon (;).</small>
-						</div>
+            <div class="form-group required">
+              <label>Author(s)</label>
+              <input type="text" class="form-control" id="form-release-author" aria-describedby="author-help" placeholder="name; email, Steve Page; steve@stanford.edu" required>
+              <small id="author-help" class="form-text text-muted">Separate each author by a comma (,). An author can have a name and an e-mail separated by a semi-colon (;).</small>
+            </div>
 
-						<div id="step2-btns">
-							<button id="step2-back-btn" type="button" class="btn btn-warning">Go Back</button>
-							<button type="submit" class="btn btn-primary">Continue</button>
-						</div>
-					</form>
-				</div>
-				<div id="step3">
-					<h3>Your CITATION.CFF file has been generated!</h3>
-					<p id="step3-error" class="error-msg"></p>
-					<p>Next steps:</p>
-					<ol>
-						<li>
-							Upload the CFF file on your GitHub repository, preferably in the root directory. Optionally, update your <code>README.md</code> file to inform user about the <code>CITATION.cff</code> file
-						</li>
-						<li>
-							Create a new release on GitHub with the release version mentioned in the CFF file. Please update the CFF file if you want to release a different version.<br/>
-							Download the <code>tar.gz</code> release file from GitHub.
-						</li>
-						<li>
-							Login to Zenodo and <a href="https://zenodo.org/deposit/new/" target="_blank" rel="noopener">create a new upload</a>.
-						</li>
-						<li id="doi-list-item">
-							In the DOI field, mention the DOI <strong>{{DOI}}</strong>.
-						</li>
-					</ol>
+            <div id="step2-btns">
+              <button id="step2-back-btn" type="button" class="btn btn-warning">Go Back</button>
+              <button type="submit" class="btn btn-primary">Continue</button>
+            </div>
+          </form>
+        </div>
+        <div id="step3">
+          <h3>Your CITATION.CFF file has been generated!</h3>
+          <p id="step3-error" class="error-msg"></p>
+          <p>Next steps:</p>
+          <ol>
+            <li>
+              Upload the CFF file on your GitHub repository, preferably in the root directory. Optionally, update your <code>README.md</code> file to inform user about the <code>CITATION.cff</code> file
+            </li>
+            <li>
+              Create a new release on GitHub with the release version mentioned in the CFF file. Please update the CFF file if you want to release a different version.<br/>
+              Download the <code>tar.gz</code> release file from GitHub.
+            </li>
+            <li>
+              Login to Zenodo and <a href="https://zenodo.org/deposit/new/" target="_blank" rel="noopener">create a new upload</a>.
+            </li>
+            <li id="doi-list-item">
+              In the DOI field, mention the DOI <strong>{{DOI}}</strong>.
+            </li>
+          </ol>
 
-					<div id="download-btn-wrapper">
-						<button type="button" class="btn btn-warning" id="step3-back-btn">Go Back</button>
-						<button type="button" class="btn btn-success" id="download-cff">Download CFF</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
+          <div id="download-btn-wrapper">
+            <button type="button" class="btn btn-warning" id="step3-back-btn">Go Back</button>
+            <button type="button" class="btn btn-success" id="download-cff">Download CFF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-	<footer class="footer d-flex align-items-center">
-		<div class="container">
-			<span class="text-muted d-flex flex-row justify-content-center align-items-center flex-wrap">
-				Made with <span class="material-icons">favorite</span> by&nbsp;<a href="https://sarthaksehgal.co" target="_blank" rel="noopener">Sarthak Sehgal</a>&nbsp;at&nbsp;<a href="https://elifesciences.org/labs/fdcb6588/innovation-leaders-2020-introducing-the-cohort" target="_blank" rel="noopener">eLife Innovation Leaders 2020</a>
-			</span>
-		</div>
-	</footer>
+  <footer class="footer d-flex align-items-center">
+    <div class="container">
+      <span class="text-muted d-flex flex-row justify-content-center align-items-center flex-wrap">
+        Made with <span class="material-icons">favorite</span> by&nbsp;<a href="https://sarthaksehgal.co" target="_blank" rel="noopener">Sarthak Sehgal</a>&nbsp;at&nbsp;<a href="https://elifesciences.org/labs/fdcb6588/innovation-leaders-2020-introducing-the-cohort" target="_blank" rel="noopener">eLife Innovation Leaders 2020</a>
+      </span>
+    </div>
+  </footer>
 
-	<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Do you want to continue?</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					Your progress will be lost. Do you still want to continue?
-				</div>
-				<div class="modal-footer">
-					<button id="warningModalContinueBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Continue</button>
-					<button id="warningModalStayBtn" type="button" class="btn btn-primary">Stay on same page</button>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Do you want to continue?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Your progress will be lost. Do you still want to continue?
+        </div>
+        <div class="modal-footer">
+          <button id="warningModalContinueBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Continue</button>
+          <button id="warningModalStayBtn" type="button" class="btn btn-primary">Stay on same page</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
