@@ -132,7 +132,8 @@ warningModalStayBtn.addEventListener("click", () => {
 step1Form.addEventListener(
   "submit",
   (e) => {
-    step1Error.innerHTML = "";
+		step1Error.innerHTML = "";
+		fadeOutDiv("step1-error", 100);
     e.preventDefault();
     e.stopPropagation();
     if (step1Form.checkValidity() === false) {
