@@ -30,8 +30,8 @@
 	<main role="main" class="container d-flex flex-column justify-content-center align-items-center">
 		<div id="landing" class="row lead justify-content-center align-items-center text-center">
 				<h1>Software Citation</h1>
-				<p>Generate a CFF file for your open source software and upload it on your repository before creating a release. <a href="http://citation-file-format.github.io/" target="_blank" rel="noopener">CITATION.cff</a> files are plain text files with human- and machine-readable citation information for software. Code developers can include them in their repositories to let others know how to correctly cite their software.</p>
-				<div class="">
+				<p>The Software Citation Project provides a hassle-free experience to establish better citation standards for your open software. Generate a DOI and CFF file for your open source software and upload it on your repository before creating a release. <a href="http://citation-file-format.github.io/" target="_blank" rel="noopener">CITATION.cff</a> files are plain text file containing citation information for software.</p>
+				<div id="landing-btns">
 					<button type="button" class="btn btn-secondary" id="learn-more-btn">Learn More</button>
 					<button id="get-started-btn" type="button" class="btn btn-primary">Get Started</button>
 				</div>
@@ -57,10 +57,10 @@
 							<label for="version">Version</label>
 							<input type="text" class="form-control" id="version" placeholder="Enter version number to be released" required>
 						</div> -->
-						<div class="form-group required">
+						<div class="form-group">
 							<label for="zenodoToken">Zenodo Access Token</label>
-							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token" required>
-							<small id="zenodoHelp" class="form-text text-muted">Please login to Zenodo and <a href="https://zenodo.org/account/settings/applications/tokens/new/" target="_blank" rel="noopener">generate an access token</a> with write permissions. We do not store your token. Do not want to share your token? <a href="#">Follow these steps.</a></small>
+							<input type="text" class="form-control" id="zenodoToken" placeholder="Zenodo Access Token">
+							<small id="zenodoHelp" class="form-text text-muted">Please login to Zenodo and <a href="https://zenodo.org/account/settings/applications/tokens/new/" target="_blank" rel="noopener">generate an access token</a> with write permissions. We do not store your token. Do not want to share your token? <a href="/faq">Please refer to our FAQ.</a></small>
 						</div>
 						<p id="step1-error" class="error-msg"></p>
 						<button type="submit" class="btn btn-primary">Next</button>
