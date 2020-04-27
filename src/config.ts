@@ -1,4 +1,4 @@
-export const BASE_URL = "./api";
+export const BASE_URL = "http://localhost:8000/api";
 
 export type resObjType = {
     status: number,
@@ -19,14 +19,6 @@ export type cffDataType = {
 	license?: string,
 	repository?: string,
 	url?: string,
-	authors?: [authorType],
+	authors?: string,
 	message?: string
-};
-
-export type authorType = {
-	["family-names"]: string,
-	["given-names"]: string,
-	orcid?: string,
-	email?: string,
-	webstie?: string
 };

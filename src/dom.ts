@@ -1,7 +1,7 @@
 import "bootstrap";
 import * as jQuery from "jquery";
 import { getDoi, getGHData, generateCff, downloadCff } from "./apiReq";
-import { resObjType, cffDataType, authorType } from "./config";
+import { resObjType, cffDataType } from "./config";
 const delay = require("delay");
 let $: any = jQuery;
 
@@ -46,7 +46,8 @@ const step2FormFields: {
   version: HTMLInputElement;
   doi: HTMLInputElement;
   message: HTMLInputElement;
-  abstract: HTMLInputElement;
+	abstract: HTMLInputElement;
+	authors: HTMLInputElement;
 } = {
   title: <HTMLInputElement>document.getElementById("form-title")!,
   ["date-released"]: <HTMLInputElement>(
@@ -55,7 +56,8 @@ const step2FormFields: {
   version: <HTMLInputElement>document.getElementById("form-release-version")!,
   doi: <HTMLInputElement>document.getElementById("form-doi")!,
   message: <HTMLInputElement>document.getElementById("form-message")!,
-  abstract: <HTMLInputElement>document.getElementById("form-abstract")!,
+	abstract: <HTMLInputElement>document.getElementById("form-abstract")!,
+	authors: <HTMLInputElement>document.getElementById("form-release-author")!
 };
 
 let isGettingStartedClicked = false;
@@ -179,7 +181,7 @@ let setFormData = () => {
   step2FormFields.title.value = data.title || "";
   step2FormFields.doi.value = data.doi || "";
   step2FormFields.abstract.value = data.abstract || "";
-  step2FormFields["date-released"].value = getDate();
+	step2FormFields["date-released"].value = getDate();
 };
 
 function getDate() {
@@ -202,7 +204,8 @@ step2Form.addEventListener(
     }
     data.title = step2FormFields.title.value;
     data.message = step2FormFields.message.value;
-    data.abstract = step2FormFields.abstract.value;
+		data.abstract = step2FormFields.abstract.value;
+		data.authors = step2FormFields.authors.value;
     data["date-released"] = step2FormFields["date-released"].value;
     data.version = step2FormFields.version.value;
     // replace {{DOI}} with actual DOI
