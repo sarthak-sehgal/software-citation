@@ -91,11 +91,18 @@ function crossFadeDivs(
 }
 
 /** DOM changes */
+// learn more button click
+learnMoreBtn.addEventListener("click", (e) => {
+	e.preventDefault();
+	window.location.href = "/about";
+})
+
 // startup changes
 fadeOutDiv("spinnerDiv", 0);
 
 // cross fade on get started button click
-getStartedBtnDiv.addEventListener("click", () => {
+getStartedBtnDiv.addEventListener("click", (e) => {
+	e.preventDefault();
   isGettingStartedClicked = true;
   crossFadeDivs("landing", "steps", 500);
 });
@@ -140,38 +147,63 @@ step1Form.addEventListener(
     crossFadeDivs("step1", "spinnerDiv", 300);
     spinnerMsg.innerHTML = "Fetching data...";
     (async () => {
-      await delay(300);
-      getDoi(zenodoToken.value, (res: resObjType) => {
-        if (res.status == 0) {
-          crossFadeDivs("spinnerDiv", "step1", 100);
-          fadeInDiv("step1-error", 150);
-          step1Error.innerHTML = res.message;
-        } else {
-          data.doi = res.message;
-          console.log("Getting data from GitHub");
-          getGHData(githubURL.value, (res: resObjType) => {
-            if (res.status == 0) {
-              crossFadeDivs("spinnerDiv", "step1", 100);
-              fadeInDiv("step1-error", 150);
-              step1Error.innerHTML = res.message;
-            } else {
-              if (res.status == 2) {
-                ghUrlWarning.style.display = "block";
-              } else {
-                data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
-                data.abstract = res.data?.description?.replace(
-                  /[^\x00-\x7F]/g,
-                  ""
-                );
-              }
+			await delay(300);
+			if (zenodoToken.value.trim() == '') {
+				console.log("Getting data from GitHub");
+				getGHData(githubURL.value, (res: resObjType) => {
+					if (res.status == 0) {
+						crossFadeDivs("spinnerDiv", "step1", 100);
+						fadeInDiv("step1-error", 150);
+						step1Error.innerHTML = res.message;
+					} else {
+						if (res.status == 2) {
+							ghUrlWarning.style.display = "block";
+						} else {
+							data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
+							data.abstract = res.data?.description?.replace(
+								/[^\x00-\x7F]/g,
+								""
+							);
+						}
 
-              setFormData();
-              crossFadeDivs("spinnerDiv", "step2", 100);
-              progressBar.style.width = "66%";
-            }
-          });
-        }
-      });
+						setFormData();
+						crossFadeDivs("spinnerDiv", "step2", 100);
+						progressBar.style.width = "66%";
+					}
+				});
+			} else {
+				getDoi(zenodoToken.value, (res: resObjType) => {
+					if (res.status == 0) {
+						crossFadeDivs("spinnerDiv", "step1", 100);
+						fadeInDiv("step1-error", 150);
+						step1Error.innerHTML = res.message;
+					} else {
+						data.doi = res.message;
+						console.log("Getting data from GitHub");
+						getGHData(githubURL.value, (res: resObjType) => {
+							if (res.status == 0) {
+								crossFadeDivs("spinnerDiv", "step1", 100);
+								fadeInDiv("step1-error", 150);
+								step1Error.innerHTML = res.message;
+							} else {
+								if (res.status == 2) {
+									ghUrlWarning.style.display = "block";
+								} else {
+									data.title = res.data?.title?.replace(/[^\x00-\x7F]/g, "");
+									data.abstract = res.data?.description?.replace(
+										/[^\x00-\x7F]/g,
+										""
+									);
+								}
+	
+								setFormData();
+								crossFadeDivs("spinnerDiv", "step2", 100);
+								progressBar.style.width = "66%";
+							}
+						});
+					}
+				});
+			}
     })();
   },
   false
@@ -182,6 +214,8 @@ let setFormData = () => {
   step2FormFields.doi.value = data.doi || "";
   step2FormFields.abstract.value = data.abstract || "";
 	step2FormFields["date-released"].value = getDate();
+
+	if (step2FormFields.doi.value == "") step2FormFields.doi.disabled = false;
 };
 
 function getDate() {
@@ -207,7 +241,9 @@ step2Form.addEventListener(
 		data.abstract = step2FormFields.abstract.value;
 		data.authors = step2FormFields.authors.value;
     data["date-released"] = step2FormFields["date-released"].value;
-    data.version = step2FormFields.version.value;
+		data.version = step2FormFields.version.value;
+		data.doi = step2FormFields.doi.value;
+
     // replace {{DOI}} with actual DOI
     let str = doiListItem.innerHTML;
     str = str.replace("{{DOI}}", data.doi || "");

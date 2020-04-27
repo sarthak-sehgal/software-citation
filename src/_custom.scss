@@ -117,6 +117,12 @@ body {
 		padding: 15px;
 		width: 100%;
 
+		#landing-btns {
+			button {
+				margin: 0 5px;
+			}
+		}
+
 		@media (max-width: map-get($map: $container-max-widths, $key: 'sm')) {
 			h1 {
 				font-size: 2rem;
