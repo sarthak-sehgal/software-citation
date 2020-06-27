@@ -1,6 +1,8 @@
 # Software Citation Project: Beta Out!
 _"Enabling research software engineers to add citability in open source software without hassle."_
 
+**Please provide your feedback (anonymous) at [https://forms.gle/RCbpupGAnUDRrRM4A](https://forms.gle/RCbpupGAnUDRrRM4A )**
+
 **Check out the beta release at [http://citation.software](http://citation.software) or [https://software-citation.herokuapp.com/](https://software-citation.herokuapp.com/)**
 
 ![Website Preview](./preview.gif)
