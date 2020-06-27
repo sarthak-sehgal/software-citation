@@ -39,6 +39,7 @@ const downloadCffBtn = <HTMLButtonElement>(
 );
 const step3Error = document.getElementById("step3-error")!;
 const doiListItem = document.getElementById("doi-list-item")!;
+const feedbackBtn = document.getElementById('feedback-btn')!;
 
 const step2FormFields: {
   title: HTMLInputElement;
@@ -104,6 +105,7 @@ fadeOutDiv("spinnerDiv", 0);
 getStartedBtnDiv.addEventListener("click", (e) => {
   e.preventDefault();
   isGettingStartedClicked = true;
+  fadeOutDiv("feedback-btn", 250);
   crossFadeDivs("landing", "steps", 500);
 });
 
